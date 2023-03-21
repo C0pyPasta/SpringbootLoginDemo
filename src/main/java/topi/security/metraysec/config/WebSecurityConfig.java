@@ -31,13 +31,14 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+
         httpSecurity
                 // we don't need CSRF because our token is invulnerable
                 .csrf().disable()
 
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 
-                // don't create session
+                // don't create a session
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 
                 .authorizeRequests()
@@ -51,7 +52,7 @@ public class WebSecurityConfig {
         httpSecurity
                 .addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
-        // disable page caching
+        // disable the page caching
         httpSecurity.headers().cacheControl();
 
         return httpSecurity.build();

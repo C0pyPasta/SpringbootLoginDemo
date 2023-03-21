@@ -23,7 +23,6 @@ public class InitService {
     @PostConstruct
     public void initUsers() {
 
-
         this.userRepository.deleteAll();
         this.authorityRepository.deleteAll();
 
@@ -41,16 +40,20 @@ public class InitService {
     }
 
     private void initAuthorities() {
+
         // John has authority USER and ADMIN
         User user = this.userRepository.findByUsername("johndoe");
+
         for (AuthorityName authorityName : AuthorityName.values()) {
             Authority authority = new Authority();
             authority.setName(authorityName);
             user.getAuthorities().add(authority);
         }
         this.userRepository.save(user);
+
         // Jane has authority USER
         user = this.userRepository.findByUsername("janedoe");
+
         Authority authority = this.authorityRepository.findByName(AuthorityName.USER);
         user.getAuthorities().add(authority);
         this.userRepository.save(user);

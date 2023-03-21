@@ -56,7 +56,4 @@ public class User {
 		this.authorities = authorities;
 	}
 
-    
-
-
 }

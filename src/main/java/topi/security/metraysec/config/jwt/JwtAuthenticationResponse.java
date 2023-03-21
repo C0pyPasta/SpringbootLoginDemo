@@ -3,6 +3,7 @@ package topi.security.metraysec.config.jwt;
 import java.io.Serializable;
 
 public class JwtAuthenticationResponse implements Serializable {
+
     private final String token;
 
     public JwtAuthenticationResponse(String token) {
@@ -12,7 +13,5 @@ public class JwtAuthenticationResponse implements Serializable {
 	public String getToken() {
 		return token;
 	}
-    
-    
-    
+
 }

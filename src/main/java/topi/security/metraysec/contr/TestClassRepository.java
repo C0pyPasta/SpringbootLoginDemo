@@ -3,11 +3,9 @@ package topi.security.metraysec.contr;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
-import topi.security.metraysec.domein.Boot;
-
+import topi.security.metraysec.domein.TestClass;
 
 @Component
-public interface BootRepository extends CrudRepository<Boot, Long>{
+public interface TestClassRepository extends CrudRepository<TestClass, Long>{
 
 }
-

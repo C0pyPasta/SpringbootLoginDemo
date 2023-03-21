@@ -7,5 +7,7 @@ import topi.security.metraysec.security.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
+
     User findByUsername(String username);
+
 }
