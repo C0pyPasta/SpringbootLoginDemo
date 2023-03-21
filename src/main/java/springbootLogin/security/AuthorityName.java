@@ -1,4 +1,4 @@
-package springbootLogin.withRaymond.security;
+package springbootLogin.security;
 
 public enum AuthorityName {
     USER, ADMIN

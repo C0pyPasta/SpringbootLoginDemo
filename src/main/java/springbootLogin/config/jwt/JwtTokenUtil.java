@@ -1,4 +1,4 @@
-package springbootLogin.withRaymond.config.jwt;
+package springbootLogin.config.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

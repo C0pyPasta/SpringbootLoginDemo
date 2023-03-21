@@ -1,11 +1,11 @@
-package springbootLogin.withRaymond.controller;
+package springbootLogin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import springbootLogin.withRaymond.security.Authority;
-import springbootLogin.withRaymond.security.AuthorityName;
-import springbootLogin.withRaymond.security.User;
+import springbootLogin.security.Authority;
+import springbootLogin.security.AuthorityName;
+import springbootLogin.security.User;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;

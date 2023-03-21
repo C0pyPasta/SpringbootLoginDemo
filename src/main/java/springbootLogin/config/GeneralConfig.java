@@ -1,4 +1,4 @@
-package springbootLogin.withRaymond.config;
+package springbootLogin.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

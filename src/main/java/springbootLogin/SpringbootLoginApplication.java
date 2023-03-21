@@ -1,13 +1,13 @@
-package springbootLogin.withRaymond;
+package springbootLogin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MetraysecApplication {
+public class SpringbootLoginApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MetraysecApplication.class, args);
+		SpringApplication.run(SpringbootLoginApplication.class, args);
 	}
 
 }

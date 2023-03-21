@@ -1,9 +1,9 @@
-package springbootLogin.withRaymond.controller;
+package springbootLogin.controller;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import springbootLogin.withRaymond.security.User;
+import springbootLogin.security.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {

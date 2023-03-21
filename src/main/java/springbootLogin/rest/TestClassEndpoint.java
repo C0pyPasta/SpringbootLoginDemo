@@ -1,11 +1,11 @@
-package springbootLogin.withRaymond.rest;
+package springbootLogin.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import springbootLogin.withRaymond.controller.TestClassRepository;
-import springbootLogin.withRaymond.domain.TestClass;
+import springbootLogin.controller.TestClassRepository;
+import springbootLogin.domain.TestClass;
 
 @RestController
 public class TestClassEndpoint {

@@ -1,4 +1,4 @@
-package springbootLogin.withRaymond.domain;
+package springbootLogin.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

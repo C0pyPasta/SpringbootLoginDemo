@@ -1,11 +1,11 @@
-package springbootLogin.withRaymond.controller;
+package springbootLogin.controller;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import springbootLogin.withRaymond.config.jwt.JwtUser;
-import springbootLogin.withRaymond.security.Authority;
-import springbootLogin.withRaymond.security.User;
+import springbootLogin.config.jwt.JwtUser;
+import springbootLogin.security.Authority;
+import springbootLogin.security.User;
 
 import java.util.List;
 import java.util.stream.Collectors;

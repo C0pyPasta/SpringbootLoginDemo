@@ -1,4 +1,4 @@
-package springbootLogin.withRaymond.config.jwt;
+package springbootLogin.config.jwt;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

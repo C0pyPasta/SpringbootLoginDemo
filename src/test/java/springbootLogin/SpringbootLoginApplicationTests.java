@@ -1,10 +1,10 @@
-package springbootLogin.withRaymond;
+package springbootLogin;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MetraysecApplicationTests {
+class SpringbootLoginApplicationTests {
 
 	@Test
 	void contextLoads() {

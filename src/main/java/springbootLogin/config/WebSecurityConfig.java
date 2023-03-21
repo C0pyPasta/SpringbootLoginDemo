@@ -1,4 +1,4 @@
-package springbootLogin.withRaymond.config;
+package springbootLogin.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,8 +11,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import springbootLogin.withRaymond.config.jwt.JwtAuthenticationEntryPoint;
-import springbootLogin.withRaymond.config.jwt.JwtAuthenticationTokenFilter;
+import springbootLogin.config.jwt.JwtAuthenticationEntryPoint;
+import springbootLogin.config.jwt.JwtAuthenticationTokenFilter;
 
 @Configuration
 public class WebSecurityConfig {

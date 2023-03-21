@@ -1,7 +1,7 @@
-package springbootLogin.withRaymond.controller;
+package springbootLogin.controller;
 
-import springbootLogin.withRaymond.security.Authority;
-import springbootLogin.withRaymond.security.AuthorityName;
+import springbootLogin.security.Authority;
+import springbootLogin.security.AuthorityName;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

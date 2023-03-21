@@ -1,4 +1,4 @@
-package springbootLogin.withRaymond.rest;
+package springbootLogin.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,10 +12,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
-import springbootLogin.withRaymond.config.jwt.JwtAuthenticationRequest;
-import springbootLogin.withRaymond.config.jwt.JwtAuthenticationResponse;
-import springbootLogin.withRaymond.config.jwt.JwtTokenUtil;
-import springbootLogin.withRaymond.config.jwt.JwtUser;
+import springbootLogin.config.jwt.JwtAuthenticationRequest;
+import springbootLogin.config.jwt.JwtTokenUtil;
+import springbootLogin.config.jwt.JwtUser;
+import springbootLogin.config.jwt.JwtAuthenticationResponse;
 
 import javax.servlet.http.HttpServletRequest;
 

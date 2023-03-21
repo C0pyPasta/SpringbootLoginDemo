@@ -1,4 +1,4 @@
-package springbootLogin.withRaymond.config.jwt;
+package springbootLogin.config.jwt;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

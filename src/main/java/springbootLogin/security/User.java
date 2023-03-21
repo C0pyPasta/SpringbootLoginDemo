@@ -1,4 +1,4 @@
-package springbootLogin.withRaymond.security;
+package springbootLogin.security;
 
 import javax.persistence.*;
 import java.util.ArrayList;

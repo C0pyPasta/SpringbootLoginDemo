@@ -1,4 +1,4 @@
-package springbootLogin.withRaymond.config.jwt;
+package springbootLogin.config.jwt;
 
 import java.io.Serializable;
 
