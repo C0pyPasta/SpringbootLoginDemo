@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Springboot Login</title>
+</head>
+
+<style>
+    table {
+        border: 2px solid darkcyan;
+        border-radius: 5px;
+        padding: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20%;
+    }
+</style>
+
+<script>
+    function sendLogin() {
+        // name = "johndoe";
+        // password = "password2019"
+
+        // Get the content of the two input fields by id
+        let name = document.getElementById("usernameInput").value;
+        let password = document.getElementById("passwordInput").value;
+
+        // Convert the JSON object into a string "json"
+        let json = JSON.stringify({ 
+            username: name, 
+            password: password 
+        });
+
+        // Create a new XMLHttpRequest object "xhr"
+        let xhr = new XMLHttpRequest();
+
+        // Configure it: POST-request for the URL /api/auth
+        xhr.open('POST', 'http://localhost:8080/api/auth');
+
+        // Set the request header to application/json
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        // Send the request
+        xhr.send(json);
+
+        // Recieve a bearer token in your alert box
+        xhr.onload = () => alert(xhr.response);
+    }
+</script>
+
+<body>
+    <table>
+        <tr>
+            <td><label for="usernameLabel">username: </label>
+            </td><td><input id="usernameInput" type="text"></td>
+        </tr>
+        <tr>
+            <td><label for="passwordLabel">password: </label></td>
+            <td><input id="passwordInput" type="text"></td>
+        </tr>
+        <tr>
+            <td></td> <!-- dummy <td></td> lining out the button -->
+            <td style="text-align: end;"><button onclick="sendLogin()">login</button></td>
+        </tr>
+    </table>
+</body>
+</html>
