@@ -28,7 +28,7 @@
         let password = document.getElementById("passwordInput").value;
 
         // Convert the JSON object into a string "json"
-        let json = JSON.stringify({ 
+        let jsonString = JSON.stringify({ 
             username: name, 
             password: password 
         });
@@ -43,7 +43,7 @@
         xhr.setRequestHeader('Content-Type', 'application/json');
 
         // Send the request
-        xhr.send(json);
+        xhr.send(jsonString);
 
         // Recieve a bearer token in your alert box
         xhr.onload = () => alert(xhr.response);
