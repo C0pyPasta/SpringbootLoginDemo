@@ -24,8 +24,12 @@
         // password = "password2019"
 
         // Get the content of the two input fields by id
-        let name = document.getElementById("usernameInput").value;
-        let password = document.getElementById("passwordInput").value;
+        // let name = document.getElementById("usernameInput").value;
+        // let password = document.getElementById("passwordInput").value;
+
+        // for testing
+        let name = document.getElementById("usernameInput").innerHTML = "johndoe";
+        let password = document.getElementById("passwordInput").innerHTML = "password2019"
 
         // Convert the JSON object into a string "json"
         let jsonString = JSON.stringify({ 
@@ -46,8 +50,31 @@
         xhr.send(jsonString);
 
         // Recieve a bearer token in your alert box
-        xhr.onload = () => alert(xhr.response);
+        // xhr.onload = () => alert(xhr.responseText);
+
+        // Store the token
+        xhr.onload = function() {
+        localStorage.setItem("token", xhr.response);
+        console.log(localStorage.getItem("token"));
+        };
     }
+
+    function testBearerToken() {
+
+        let bearerToken = 'Bearer ' + localStorage.getItem("token");
+        console.log(bearerToken);
+
+        fetch('http://localhost:8080/api/auth/user', { 
+            method: 'GET', 
+            mode:'no-cors',
+            headers: new Headers({
+                'Authorization': bearerToken,
+                'Content-Type':'application/json'
+            })
+        });
+
+    }
+
 </script>
 
 <body>
@@ -65,5 +92,6 @@
             <td style="text-align: end;"><button onclick="sendLogin()">login</button></td>
         </tr>
     </table>
+    <div style="text-align: center; margin-top: 5px;"><button onclick="testBearerToken()">get user</button></div>
 </body>
 </html>
