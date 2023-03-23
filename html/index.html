@@ -14,7 +14,6 @@
         padding: 20px;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 20%;
     }
 </style>
 
@@ -58,6 +57,7 @@
         xhr.onload = function() {
         localStorage.setItem("bearerToken", xhr.response);
         console.log(localStorage.getItem("bearerToken"));
+        document.getElementById('display').innerHTML = localStorage.getItem("bearerToken");    
         };
     }
 
@@ -74,27 +74,14 @@
                 'Authorization': bearerToken
             })
         })
-        .then(response => response.json())
-        .then(body => console.log(body));
-    }
-
-    function testSayHello() {
-
-        console.log(bearerToken);
-
-        // Perform the request with the bearerToken send in the header
-        fetch('http://localhost:8080/sayHello', { 
-            method: 'GET', 
-            mode:'no-cors',
-            headers: new Headers({
-                'Authorization': bearerToken
-            })
-        });
+        .then(response => response.text())
+        .then(body => document.getElementById('display').innerHTML = body.replace(/,/g,'<br>').replace(/"/g,' ').replace(/{/g, '').replace(/}/g, ''));
     }
 
 </script>
 
 <body>
+    <header id="display" style="text-align: left; margin-bottom: 5px;"></header>
     <table>
         <tr>
             <td><label for="usernameLabel">username: </label>
@@ -109,7 +96,6 @@
             <td style="text-align: end;"><button onclick="sendLogin()">login</button></td>
         </tr>
     </table>
-    <div style="text-align: center; margin-top: 5px;"><button onclick="testBearerToken()">get user</button></div>
-    <div style="text-align: center; margin-top: 5px;"><button onclick="testSayHello()">say Hello</button></div>
+    <div style="text-align: center; margin-top: 5px;"><button onclick="testBearerToken()">get logged in user</button></div>
 </body>
 </html>
