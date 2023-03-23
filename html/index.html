@@ -61,17 +61,20 @@
 
     function testBearerToken() {
 
+        // Get the token out of localStorage and concatinate/substring it into the right format
         let storedHash = localStorage.getItem("bearerToken");
         let bearerToken = 'Bearer ' + storedHash.substring(10, storedHash.length - 2);
         console.log(bearerToken);
 
+        // Perform the request with the bearerToken send in the header
         fetch('http://localhost:8080/api/auth/user', { 
             method: 'GET', 
-            mode:'no-cors',
+            // mode:'no-cors',
             headers: new Headers({
-                'Authorization': bearerToken,
+                'Authorization': bearerToken
             })
-        });
+        })
+        .then(body => console.log(body));
     }
 
 </script>
