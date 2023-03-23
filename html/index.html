@@ -19,6 +19,8 @@
 </style>
 
 <script>
+    let bearerToken;
+
     function sendLogin() {
         // name = "johndoe";
         // password = "password2019"
@@ -60,22 +62,34 @@
     }
 
     function testBearerToken() {
-
         // Get the token out of localStorage and concatinate/substring it into the right format
         let storedHash = localStorage.getItem("bearerToken");
-        let bearerToken = 'Bearer ' + storedHash.substring(10, storedHash.length - 2);
+        bearerToken = 'Bearer ' + storedHash.substring(10, storedHash.length - 2);
         console.log(bearerToken);
 
         // Perform the request with the bearerToken send in the header
         fetch('http://localhost:8080/api/auth/user', { 
             method: 'GET', 
-            // mode:'no-cors',
             headers: new Headers({
                 'Authorization': bearerToken
             })
         })
         .then(response => response.json())
         .then(body => console.log(body));
+    }
+
+    function testSayHello() {
+
+        console.log(bearerToken);
+
+        // Perform the request with the bearerToken send in the header
+        fetch('http://localhost:8080/sayHello', { 
+            method: 'GET', 
+            mode:'no-cors',
+            headers: new Headers({
+                'Authorization': bearerToken
+            })
+        });
     }
 
 </script>
@@ -96,5 +110,6 @@
         </tr>
     </table>
     <div style="text-align: center; margin-top: 5px;"><button onclick="testBearerToken()">get user</button></div>
+    <div style="text-align: center; margin-top: 5px;"><button onclick="testSayHello()">say Hello</button></div>
 </body>
 </html>
