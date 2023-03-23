@@ -74,6 +74,7 @@
                 'Authorization': bearerToken
             })
         })
+        .then(response => response.json())
         .then(body => console.log(body));
     }
 
