@@ -54,14 +54,15 @@
 
         // Store the token
         xhr.onload = function() {
-        localStorage.setItem("token", xhr.response);
-        console.log(localStorage.getItem("token"));
+        localStorage.setItem("bearerToken", xhr.response);
+        console.log(localStorage.getItem("bearerToken"));
         };
     }
 
     function testBearerToken() {
 
-        let bearerToken = 'Bearer ' + localStorage.getItem("token");
+        let storedHash = localStorage.getItem("bearerToken");
+        let bearerToken = 'Bearer ' + storedHash.substring(10, storedHash.length - 2);
         console.log(bearerToken);
 
         fetch('http://localhost:8080/api/auth/user', { 
@@ -69,10 +70,8 @@
             mode:'no-cors',
             headers: new Headers({
                 'Authorization': bearerToken,
-                'Content-Type':'application/json'
             })
         });
-
     }
 
 </script>
