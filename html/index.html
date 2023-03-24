@@ -14,7 +14,7 @@
         padding: 20px;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 20%;
+        margin-top: 5%;
     }
 </style>
 
@@ -26,12 +26,12 @@
         // password = "password2019"
 
         // Get the content of the two input fields by id
-        // let name = document.getElementById("usernameInput").value;
-        // let password = document.getElementById("passwordInput").value;
+        let name = document.getElementById("usernameInput").value;
+        let password = document.getElementById("passwordInput").value;
 
         // for testing
-        let name = document.getElementById("usernameInput").innerHTML = "johndoe";
-        let password = document.getElementById("passwordInput").innerHTML = "password2019"
+        // let name = document.getElementById("usernameInput").innerHTML = "johndoe";
+        // let password = document.getElementById("passwordInput").innerHTML = "password2019"
 
         // Convert the JSON object into a string "json"
         let jsonString = JSON.stringify({ 
@@ -54,8 +54,10 @@
         // Recieve a bearer token in your alert box
         // xhr.onload = () => alert(xhr.responseText);
 
-        // Store the token
+        // Display and store the token
         xhr.onload = function() {
+        document.getElementById("display").innerHTML = xhr.response;
+
         localStorage.setItem("bearerToken", xhr.response);
         console.log(localStorage.getItem("bearerToken"));
         };
@@ -69,33 +71,20 @@
 
         // Perform the request with the bearerToken send in the header
         fetch('http://localhost:8080/api/auth/user', { 
-            method: 'GET', 
+            method: 'GET',
             headers: new Headers({
                 'Authorization': bearerToken
             })
         })
         .then(response => response.json())
-        .then(body => console.log(body));
-    }
-
-    function testSayHello() {
-
-        console.log(bearerToken);
-
-        // Perform the request with the bearerToken send in the header
-        fetch('http://localhost:8080/sayHello', { 
-            method: 'GET', 
-            mode:'no-cors',
-            headers: new Headers({
-                'Authorization': bearerToken
-            })
-        });
+        .then(body => document.getElementById("display").innerHTML = JSON.stringify(body));    
     }
 
 </script>
 
 <body>
     <table>
+        <header id="display" style="text-align: center; margin-top: 5px; margin-bottom: 5px"></header>
         <tr>
             <td><label for="usernameLabel">username: </label>
             </td><td><input id="usernameInput" type="text"></td>
@@ -110,6 +99,5 @@
         </tr>
     </table>
     <div style="text-align: center; margin-top: 5px;"><button onclick="testBearerToken()">get user</button></div>
-    <div style="text-align: center; margin-top: 5px;"><button onclick="testSayHello()">say Hello</button></div>
 </body>
 </html>
