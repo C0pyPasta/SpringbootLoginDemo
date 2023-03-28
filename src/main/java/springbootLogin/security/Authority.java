@@ -16,7 +16,7 @@ import javax.persistence.ManyToMany;
 public class Authority {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false)
