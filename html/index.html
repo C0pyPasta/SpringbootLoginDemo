@@ -118,15 +118,33 @@
         .then(pindakaas => document.getElementById("resultDisplay").innerHTML = pindakaas
         .replaceAll(',','<br>').replaceAll('{','').replaceAll('"','').replaceAll(':', ' : ').replaceAll('[','<br>').replaceAll('}','').replace(']', '').replace('enabled : true', '')
         );  
-
-        // Example looping through result, second dimension not sure yet how to get that out
-        // const res = JSON.parse(xhr.responseText);
-        // for (const key in res){
-        //     if(obj.hasOwnProperty(key)){
-        //     console.log(`${key} : ${res[key]}`)
-        //     }
-        // }
     }
+// To get writ of the replace() and replaceAll() we can use a (nested) for(Each) loop   
+// ------------------------------------------------ We can store an array inside another JSON array. It is known as an array of arrays or a multi-dimensional JSON array.
+        // var siteInfo = {
+	    //     "name" : "blogger",
+	    //     "users" : [
+		//         [ "admins", "1", "2" , "3"],
+		//         [ "editors", "4", "5" , "6"],
+	    // ]
+// ------------------------------------------------ A simple for loop to iterate over a multi-dimensional array in JSON
+        // for (i in siteInfo .users) 
+        //     {
+	    //     for (j in siteInfo.users[i]) 
+	    //         {
+		//             x = siteInfo.users[i][j];
+		//             console.log(x);
+	    //         }
+        //     }
+// ------------------------------------------------ Program Output
+        // admins
+        // 1
+        // 2
+        // 3
+        // editors
+        // 4
+        // 5
+        // 6
 
     function trySprekerOmgeving() {
 
