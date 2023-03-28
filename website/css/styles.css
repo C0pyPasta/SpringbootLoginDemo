@@ -1,0 +1,68 @@
+
+body {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+}
+
+#omgevingKeuzeDisplay {
+    text-align: center; 
+    margin-top: 10px;
+}
+
+#loginResultDisplay {
+    border: 2px solid darkcyan;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 5px; 
+    margin-bottom: 5px; 
+    margin-left: 27.5%; 
+    margin-right: 27.5%; 
+    max-width: 45%; 
+    word-wrap: break-word;
+}
+
+table {
+    border: 2px solid darkcyan;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input {
+    background-color: antiquewhite; 
+    border-radius: 5px; 
+    font-weight: bold;
+}
+
+button {
+    background-color:thistle; 
+    border-radius: 5px; 
+    font-weight: bold;
+}
+
+#omgevingkeuzeMenu {
+    border: 2px solid darkcyan;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: fit-content;
+    padding: 8px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.omgevingkeuzeKnop {
+     background-color:thistle; 
+}
+
+.omgevingkeuzeKnop:nth-child(1) {
+    margin-right: 5px;
+}
+
+.omgevingkeuzeKnop:nth-child(3) {
+    margin-left: 5px;
+}

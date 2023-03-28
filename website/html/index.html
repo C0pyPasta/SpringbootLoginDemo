@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Demo</title>
+    <link rel="stylesheet" href="../css/styles.css"/>
+    <script src="../js/myScript.js"></script>
+</head>
+<body>
+    <div id="omgevingKeuzeDisplay"></div>
+
+    <table>
+        <header id="loginResultDisplay"></header>
+        <tr>
+            <td><label for="usernameLabel">Gebruiker: </label></td>
+            <td><input id="usernameInput" type="text"></td>
+        </tr>
+        <tr>
+            <td><label for="passwordLabel">Wachtwoord: </label></td>
+            <td><input id="passwordInput" type="text"></td>
+        </tr>
+        <tr>
+            <td><!-- dummy lining out the button --></td>
+            <td style="text-align: end;"><button onclick="sendLogin()">Login</button></td>
+        </tr>
+    </table>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <button onclick="testBearerToken()">Gebruikers Profiel</button>
+    </div>
+
+    <div id="omgevingkeuzeMenu">
+        <input class="omgevingkeuzeKnop" type="button" value="Spreker Omgeving" onclick="trySprekerOmgeving()">
+        <input class="omgevingkeuzeKnop" type="button" value="Organisator Omgeving" onclick="tryOrganisatorOmgeving()">
+        <input class="omgevingkeuzeKnop" type="button" value="Administrator Omgeving" onclick="tryAdministratorOmgeving()">
+    </div>
+</body>
+</html>
