@@ -27,13 +27,18 @@ public class InitService {
         this.authorityRepository.deleteAll();
 
         User user = new User();
-        user.setUsername("johndoe"); // not to be confused with the user accessing the DB
-        user.setPassword("$2a$04$mOcweZoue3.bVKiRrpPU8u1e734k2v1C0F5r8yOKYj2x5a1RrjR/O"); // password2019 bcrypted
+        user.setUsername("miranda"); // not to be confused with the user accessing the DB
+        user.setPassword("$2a$12$CWO4tdkG.zyeJGfNrkK/xOIy842pFuzOuu6fNSKzPNgLgSbhXXHoC"); // Welkom01 bcrypted
         this.userRepository.save(user);
 
         user = new User();
-        user.setUsername("janedoe");
-        user.setPassword("$2a$04$mOcweZoue3.bVKiRrpPU8u1e734k2v1C0F5r8yOKYj2x5a1RrjR/O"); // password2019 bcrypted
+        user.setUsername("vincent");
+        user.setPassword("$2a$12$CWO4tdkG.zyeJGfNrkK/xOIy842pFuzOuu6fNSKzPNgLgSbhXXHoC"); // Welkom01 bcrypted
+        this.userRepository.save(user);
+
+        user = new User();
+        user.setUsername("cornelis");
+        user.setPassword("$2a$12$CWO4tdkG.zyeJGfNrkK/xOIy842pFuzOuu6fNSKzPNgLgSbhXXHoC"); // Welkom01 bcrypted
         this.userRepository.save(user);
 
         initAuthorities();
@@ -41,8 +46,8 @@ public class InitService {
 
     private void initAuthorities() {
 
-        // John has authority USER and ADMIN
-        User user = this.userRepository.findByUsername("johndoe");
+        // miranda has all authorities SPREKER, ORGANISATOR and ADMINISTRATOR
+        User user = this.userRepository.findByUsername("miranda");
 
         for (AuthorityName authorityName : AuthorityName.values()) {
             Authority authority = new Authority();
@@ -51,10 +56,19 @@ public class InitService {
         }
         this.userRepository.save(user);
 
-        // Jane has authority USER
-        user = this.userRepository.findByUsername("janedoe");
+        // vincent has authority SPREKER and ORGANISATOR
+        user = this.userRepository.findByUsername("vincent");
 
-        Authority authority = this.authorityRepository.findByName(AuthorityName.USER);
+        Authority authority = this.authorityRepository.findByName(AuthorityName.SPREKER);
+        user.getAuthorities().add(authority);
+        authority = this.authorityRepository.findByName(AuthorityName.ORGANISATOR);
+        user.getAuthorities().add(authority);
+        this.userRepository.save(user);
+
+        // cornelis has authority SPREKER
+        user = this.userRepository.findByUsername("cornelis");
+
+        authority = this.authorityRepository.findByName(AuthorityName.SPREKER);
         user.getAuthorities().add(authority);
         this.userRepository.save(user);
     }
