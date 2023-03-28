@@ -4,34 +4,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Springboot Login</title>
+    <title>Login Demo</title>
 </head>
 
 <style>
+    body {
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: bold;
+    }
+
     table {
         border: 2px solid darkcyan;
         border-radius: 5px;
         padding: 20px;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 20%;
+        margin-top: 20px;
+    }
+
+    input {
+        background-color: antiquewhite; 
+        border-radius: 5px; 
+        font-weight: bold;
+    }
+
+    #hflex {
+        border: 2px solid darkcyan;
+        border-radius: 5px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        width: fit-content;
+        padding: 8px;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #resultDisplay {
+        border: 2px solid darkcyan;
+        border-radius: 5px;
+
+        padding: 5px;
+        margin-top: 5px; 
+        margin-bottom: 5px; 
+        margin-left: 27.5%; 
+        margin-right: 27.5%; 
+        max-width: 45%; 
+        word-wrap: break-word;
     }
 </style>
 
 <script>
     let bearerToken;
 
+    // Hiding empty Div with id resultDisplay at the start of the program
+    window.onload = function() {
+        document.getElementById("resultDisplay").style.visibility = 'hidden';
+    }
+
     function sendLogin() {
-        // name = "johndoe";
-        // password = "password2019"
+        // Reset OmgevingKeuze div when another user logs on
+        document.getElementById("OmgevingKeuze").innerHTML = "";
 
         // Get the content of the two input fields by id
-        // let name = document.getElementById("usernameInput").value;
-        // let password = document.getElementById("passwordInput").value;
-
-        // for testing
-        let name = document.getElementById("usernameInput").innerHTML = "johndoe";
-        let password = document.getElementById("passwordInput").innerHTML = "password2019"
+        let name = document.getElementById("usernameInput").value;
+        let password = document.getElementById("passwordInput").value;
 
         // Convert the JSON object into a string "json"
         let jsonString = JSON.stringify({ 
@@ -51,11 +91,11 @@
         // Send the request
         xhr.send(jsonString);
 
-        // Recieve a bearer token in your alert box
-        // xhr.onload = () => alert(xhr.responseText);
-
-        // Store the token
+        // Display and store the token
         xhr.onload = function() {
+        document.getElementById("resultDisplay").style.visibility = 'visible';
+        document.getElementById("resultDisplay").innerHTML = xhr.responseText.replaceAll('"', '').replace('{','').replaceAll(':', ' : ').replaceAll(',','<br>').replace('}','');
+
         localStorage.setItem("bearerToken", xhr.response);
         console.log(localStorage.getItem("bearerToken"));
         };
@@ -69,33 +109,66 @@
 
         // Perform the request with the bearerToken send in the header
         fetch('http://localhost:8080/api/auth/user', { 
-            method: 'GET', 
-            headers: new Headers({
+            method: 'GET',
+            headers: {
                 'Authorization': bearerToken
-            })
+            }
         })
-        .then(response => response.json())
-        .then(body => console.log(body));
+        .then(response => response.text())
+        .then(pindakaas => document.getElementById("resultDisplay").innerHTML = pindakaas
+        .replaceAll(',','<br>').replaceAll('{','').replaceAll('"','').replaceAll(':', ' : ').replaceAll('[','<br>').replaceAll('}','').replace(']', '').replace('enabled : true', '')
+        );  
+
+        // Example looping through result, second dimension not sure yet how to get that out
+        // const res = JSON.parse(xhr.responseText);
+        // for (const key in res){
+        //     if(obj.hasOwnProperty(key)){
+        //     console.log(`${key} : ${res[key]}`)
+        //     }
+        // }
     }
 
-    function testSayHello() {
+    function trySprekerOmgeving() {
 
-        console.log(bearerToken);
-
-        // Perform the request with the bearerToken send in the header
-        fetch('http://localhost:8080/sayHello', { 
-            method: 'GET', 
-            mode:'no-cors',
-            headers: new Headers({
+        fetch('http://localhost:8080/sprekerOmgeving', { 
+            method: 'GET',
+            headers: {
                 'Authorization': bearerToken
-            })
-        });
+            }
+            
+        })
+        .then(response => response.text())
+        .then(speklap => document.getElementById("OmgevingKeuze").innerHTML = speklap)
     }
 
+    function tryOrganisatorOmgeving() {
+
+        fetch('http://localhost:8080/organisatorOmgeving', { 
+            method: 'GET',
+            headers: {
+                'Authorization': bearerToken
+            }
+        })
+        .then(response => response.text())
+        .then(bruineBonen => document.getElementById("OmgevingKeuze").innerHTML = bruineBonen)
+    }
+
+    function tryAdministratorOmgeving() {
+
+        fetch('http://localhost:8080/AdministratorOmgeving', { 
+            method: 'GET',
+            headers: {
+                'Authorization': bearerToken
+            }
+        })
+        .then(response => response.text())
+        .then(spinazie => document.getElementById("OmgevingKeuze").innerHTML = spinazie)
+    }
 </script>
 
 <body>
     <table>
+        <header id="resultDisplay"></header>
         <tr>
             <td><label for="usernameLabel">username: </label>
             </td><td><input id="usernameInput" type="text"></td>
@@ -106,10 +179,18 @@
         </tr>
         <tr>
             <td></td> <!-- dummy <td></td> lining out the button -->
-            <td style="text-align: end;"><button onclick="sendLogin()">login</button></td>
+            <td style="text-align: end;"><button style="background-color:thistle; border-radius: 5px; font-weight: bold;" onclick="sendLogin()">login</button></td>
         </tr>
     </table>
-    <div style="text-align: center; margin-top: 5px;"><button onclick="testBearerToken()">get user</button></div>
-    <div style="text-align: center; margin-top: 5px;"><button onclick="testSayHello()">say Hello</button></div>
+    <div style="text-align: center; margin-top: 20px;"><button style="background-color:thistle; border-radius: 5px; font-weight: bold;" onclick="testBearerToken()">get user profile</button></div>
+
+    <div id="hflex">
+        <input type="button" value="Spreker Omgeving" style="margin-right: 5px; background-color:thistle; " onclick="trySprekerOmgeving()">
+        <input type="button" value="Organisator Omgeving" style="background-color:thistle;" onclick="tryOrganisatorOmgeving()">
+        <input type="button" value="Administrator Omgeving" style="margin-left: 5px; background-color:thistle;" onclick="tryAdministratorOmgeving()">
+    </div>
+
+    <div id="OmgevingKeuze" style="text-align: center; margin-top: 10px;"></div>
+
 </body>
 </html>
