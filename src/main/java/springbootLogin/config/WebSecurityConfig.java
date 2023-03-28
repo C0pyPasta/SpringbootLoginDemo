@@ -45,12 +45,13 @@ public class WebSecurityConfig {
                 .antMatchers(authenticationPath).permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers("/images/**", "/js/**", "/webjars/**").permitAll()
-                .antMatchers("/api/**").hasAuthority("ADMIN")
+                .antMatchers("/api/**","/sprekerOmgeving/**").hasAuthority("SPREKER")
+                .antMatchers("/organisatorOmgeving/**").hasAuthority("ORGANISATOR")
+                .antMatchers("/AdministratorOmgeving/**").hasAuthority("ADMINISTRATOR")
                 .anyRequest().authenticated(); // for now, all users can login and do everything (e.g. UI stuff etc.)
 
         // Custom JWT based security filter
-        httpSecurity
-                .addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+        httpSecurity.addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
         // disable the page caching
         httpSecurity.headers().cacheControl();

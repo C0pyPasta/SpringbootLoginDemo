@@ -1,5 +1,6 @@
 package springbootLogin.security;
 
 public enum AuthorityName {
-    USER, ADMIN
+    // USER, ADMIN
+    SPREKER, ORGANISATOR, ADMINISTRATOR
 }
