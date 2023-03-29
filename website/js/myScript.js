@@ -5,7 +5,6 @@ let bearerToken;
 // Hiding empty Div id loginResultDisplay at the start of the program
 window.onload = function () {
     document.getElementById("loginResultDisplay").style.visibility = 'hidden';
-    document.getElementById("omgevingKeuzeDisplay").style.visibility = 'hidden';
 }
 
 
@@ -71,8 +70,6 @@ function testBearerToken() {
 
 function trySprekerOmgeving() {
 
-    document.getElementById("omgevingKeuzeDisplay").style.visibility = 'visible';
-
     fetch('http://localhost:8080/sprekerOmgeving', {
         method: 'GET',
         headers: {
@@ -87,8 +84,6 @@ function trySprekerOmgeving() {
 
 function tryOrganisatorOmgeving() {
 
-    document.getElementById("omgevingKeuzeDisplay").style.visibility = 'visible';
-
     fetch('http://localhost:8080/organisatorOmgeving', {
         method: 'GET',
         headers: {
@@ -101,8 +96,6 @@ function tryOrganisatorOmgeving() {
 
 
 function tryAdministratorOmgeving() {
-
-    document.getElementById("omgevingKeuzeDisplay").style.visibility = 'visible';
 
     fetch('http://localhost:8080/AdministratorOmgeving', {
         method: 'GET',
