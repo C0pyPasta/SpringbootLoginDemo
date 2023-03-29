@@ -48,7 +48,7 @@ public class WebSecurityConfig {
                 .antMatchers("/api/**","/sprekerOmgeving/**").hasAuthority("SPREKER")
                 .antMatchers("/organisatorOmgeving/**").hasAuthority("ORGANISATOR")
                 .antMatchers("/AdministratorOmgeving/**").hasAuthority("ADMINISTRATOR")
-                .anyRequest().authenticated(); // for now, all users can login and do everything (e.g. UI stuff etc.)
+                .anyRequest().authenticated();
 
         // Custom JWT based security filter
         httpSecurity.addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
